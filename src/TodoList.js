@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const todoList = ({todos, handleDelete}) => {
 
     function styleHandler(e) {
@@ -9,10 +11,13 @@ const todoList = ({todos, handleDelete}) => {
         <div className="todo-list">
             {todos.map((todo) => (
                 <div className="todo-preview" key={todo.id}>
+                    <Link to ={`/todos/${todo.id}`}>
+                        <h3>{todo.title}</h3>
+                        <p>{todo.body}</p>
+                    </Link>
                     <div>
-                            <h3>{todo.title}</h3>
-                            <p>{todo.body}</p>
-                        </div>
+                           
+                    </div>
                     <div className='featuress'>
                         <button>EDIT</button>
                         <button onClick={styleHandler}>DONE</button>
