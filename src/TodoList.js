@@ -15,9 +15,7 @@ const todoList = ({todos, handleDelete}) => {
                         <h3>{todo.title}</h3>
                         <p>{todo.body}</p>
                     </Link>
-                    <div>
-                           
-                    </div>
+
                     <div className='featuress'>
                         <button>EDIT</button>
                         <button onClick={styleHandler}>DONE</button>
