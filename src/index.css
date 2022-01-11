@@ -123,6 +123,15 @@ justify-content: flex-end;
   text-align: justify;
 }
 
+.todo-details button {
+  background-color: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 .create {
   max-width: 400px;
   margin: 0 auto;

@@ -7,14 +7,9 @@ import useFetch from './useFetch';
 
 
 const Home = () => {
-    const { data: todos, isPending, error } = useFetch('http://localhost:8000/todos');
-    const [data, setData] = useState(null);
+    const { data: todo, isPending, error } = useFetch('http://localhost:8000/todos');
 
-    const handleDelete = (id) => {
-        const newTodos = data.filter(todo => todo.id !== id);
-        setData(newTodos);
-    }
-
+    
     return (
         <div className="home">
             {error && <div>{error}</div>}
@@ -25,7 +20,7 @@ const Home = () => {
                 </a>
             </div>
             <div>
-                {todos && <TodoList todos={todos} handleDelete={handleDelete} />}
+                {todo && <TodoList todos={todo} />}
             </div>
         </div>
     );
