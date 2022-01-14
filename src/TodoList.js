@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 const todoList = ({ todos, handleDone}) => {
-    const [todoa, setTodo] = useState('');
+    const [todo, setTodo] = useState("");
 
     function styleHandler(e) {
         e.preventDefault();
@@ -13,7 +13,7 @@ const todoList = ({ todos, handleDone}) => {
     
     const handleDelete  = (id) => {
         const newTodos = todo.filter(todo => todo.id !== id);
-        setData(newTodos);
+        setTodo(newTodos);
     }
 
 
