@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import Setting from "./Setting";
 
 const Create = () => {
     const [title, setTitle] = useState('');
@@ -13,9 +14,9 @@ const Create = () => {
         const todo = { title, body, schedule };
         setIsPending(true);
         
-        fetch('http://localhost:8000/todos', {
+        fetch(Setting.url, {
             method: 'POST',
-            headers: { "content-Type": "application/json" },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(todo)
         }).then(() => {
             console.log('new todo added');

@@ -2,11 +2,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import TodoList from './TodoList';
 import useFetch from './useFetch';
+import Setting from './Setting';
 
 
 
 const Home = () => {
-    const { data: todo, isPending, error } = useFetch('http://localhost:8000/todos');
+    const { data: todo, isPending, error } = useFetch(Setting.url);
 
     
     return (

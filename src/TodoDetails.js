@@ -1,13 +1,14 @@
 import { useHistory, useParams } from "react-router-dom";
 import useFetch from "./useFetch";
+import Setting from './Setting';
 
 const TodoDetails = () => {
   const { id } = useParams();
-  const { data: todo, error, isPending } = useFetch('http://localhost:8000/todos/' + id);
+  const { data: todo, error, isPending } = useFetch(Setting.url + id);
   const history = useHistory();
 
   const handleClick = () => {
-    fetch('http://localhost:8000/todos/' + todo.id, {
+    fetch(Setting.url + todo.id, {
       method: 'DELETE'
     }).then(() => {
       history.push('/');

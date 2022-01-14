@@ -1,21 +1,24 @@
 {
   "todos": [
     {
-      "title": "Buy milk",
-      "body": "Buy it before night we need it for dinner",
+      "title": "Buy milk!",
+      "body": "Every day in lunch time",
       "date": "5/1/2022",
+      "done": true,
       "id": 1
     },
     {
       "title": "Go to gym!",
       "body": "Every day in lunch time",
       "date": "7/1/2022",
+      "done": false,
       "id": 2
     },
     {
       "title": "Start the Book",
       "body": "The new book name is Atomic Habits",
       "date": "24/1/2022",
+      "done": false,
       "id": 3
     }
   ]
