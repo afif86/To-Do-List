@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import useFetch from "./useFetch";
 import Setting from "./Setting";
 
 
@@ -8,14 +7,17 @@ import Setting from "./Setting";
 const TodoList = ({ todos, handleDone}) => {
     const [todosState, setTodo] = useState(todos);
 
-    function styleHandler(e, id) {
+
+    function styleHandler(e, id, done) {
         e.preventDefault();
-        e.target.parentNode.previousSibling.style.textDecoration = "line-through";
+        e.target.parentNode.previousSibling.style.textDecoration = done ? 'line-through' : "";
         fetch(Setting.url +id, {
             method: 'PATCH',
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({done:true})
-        }) 
+            body: JSON.stringify({done:!done})
+        }).then(() => {
+            window.location.reload();
+        })
     }
 
     const handleDelete  = (id) => {
@@ -40,7 +42,7 @@ const TodoList = ({ todos, handleDone}) => {
 
                     <div className='featuress'>
                         <button>EDIT</button>
-                        <button onClick={(e) => styleHandler(e,todo.id)}>DONE</button>
+                        <button onClick={(e) => styleHandler(e,todo.id, todo.done)}>{todo.done ? 'UNDO' : 'DONE'}</button>
                         <button onClick={() => handleDelete(todo.id)}>DELETE</button>
                     </div>
                 </div>
