@@ -1,22 +1,24 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import Setting from "./Setting";
-
+import {useHistory} from "react-router-dom";
 
 
 const TodoList = ({ todos, handleDone}) => {
     const [todosState, setTodo] = useState(todos);
-
+    const history = useHistory();
 
     function styleHandler(e, id, done) {
-        e.preventDefault();
-        e.target.parentNode.previousSibling.style.textDecoration = done ? 'line-through' : "";
+        const newTodos = todosState.map(todo => {
+            if(todo.id === id){
+                todo.done = !done;
+            }
+            return todo
+        });
+        setTodo(newTodos);
         fetch(Setting.url +id, {
             method: 'PATCH',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({done:!done})
-        }).then(() => {
-            window.location.reload();
         })
     }
 
@@ -31,17 +33,19 @@ const TodoList = ({ todos, handleDone}) => {
     }
 
 
+
     return (
         <div className="todo-list">
             {todosState.map((todo) => (
                 <div className="todo-preview" key={todo.id}>
-                    <Link to={`/todos/${todo.id}`} style={{textDecoration:todo.done ? 'line-through' : ""}}>
-                            <h3>{todo.title}</h3>
-                            <p>{todo.body}</p>
-                        </Link>
+                    <div style={{textDecoration:todo.done ? 'line-through' : ""}}>
+                        <h3>{todo.title}</h3>
+                        <p>{todo.body}</p>
+                        <p>{todo.date}</p>
+                        </div>
 
                     <div className='featuress'>
-                        <button>EDIT</button>
+                        <button onClick={() =>  history.push() }>EDIT</button>
                         <button onClick={(e) => styleHandler(e,todo.id, todo.done)}>{todo.done ? 'UNDO' : 'DONE'}</button>
                         <button onClick={() => handleDelete(todo.id)}>DELETE</button>
                     </div>

@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import Home from './Home';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Create from './Create';
-import TodoDetails from './TodoDetails';
+import Edit from './Edit';
 
 function App() {
   return (
@@ -19,8 +19,8 @@ function App() {
             <Route exact path="/create">
               <Create/>
             </Route>
-            <Route exact path="/todos/:id">
-              <TodoDetails/>
+            <Route exact path="/edit/:id">
+              <Edit/>
             </Route>
           </Switch>
         </div>

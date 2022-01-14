@@ -5,10 +5,6 @@ const useFetch = (url) => {
     const [isPending, setIsPending] = useState(null);
     const [error, setError] = useState(null);
 
-    const handleDelete = (id) => {
-        const newTodos = data.filter(todo => todo.id !== id);
-        setData(newTodos);
-    }
 
     useEffect(() => {
         fetch(url)
